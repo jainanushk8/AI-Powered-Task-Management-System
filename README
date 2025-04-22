@@ -1,0 +1,103 @@
+# 🧠 AI-Powered Task Management System
+
+Welcome to the **AI-Powered Task Management System** — a smart, sleek, and scalable solution to help users manage tasks efficiently using AI-based insights and automation.
+
+## 🚀 Features
+
+- 📝 Create, update, and delete tasks
+- 🔐 User authentication (Register/Login)
+- 📊 Dashboard to track task progress
+- 🧠 AI integration for task suggestions and prioritization
+- ✉️ Contact and About pages
+- 💅 Clean, responsive UI using HTML/CSS/JS
+
+## 🛠️ Tech Stack
+
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Backend**: Python (Flask)
+- **AI Module**: Python-based ML model
+- **Database**: SQLite
+- **Others**: Jinja2 templating, WTForms
+
+## 📁 Project Structure
+
+```
+AI-Powered-Task-Management-System/
+├── app/
+│   ├── templates/       # HTML pages
+│   ├── auth.py          # Auth routes
+│   ├── forms.py         # WTForms
+│   ├── models.py        # Database models
+│   └── routes.py        # Main app routes
+├── ai_module/           # AI model and prediction logic
+├── static/              # CSS and JS files
+├── instance/config.py   # Config file
+├── requirements.txt     # Dependencies
+├── run.py               # Flask app entry point
+└── README.md            # (This file)
+```
+
+## 🧪 Setup Instructions
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/jainanushk8/AI-Powered-Task-Management-System.git
+   cd AI-Powered-Task-Management-System
+   ```
+
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the app**
+   ```bash
+   python run.py
+   ```
+
+5. Visit `http://localhost:5000` in your browser.
+
+## 🤖 AI Module
+
+The `ai_module/` contains Python files responsible for:
+- Task prediction
+- Priority classification
+- Suggestions (based on learned patterns)
+
+Future plans include deeper learning and adaptive suggestions!
+
+## ✍️ Author
+
+Made with 💙 by [Anushk Jain](https://github.com/jainanushk8)
+
+---
+
+## 📌 TODO
+
+- [ ] Improve AI suggestions
+- [ ] Add task categories/tags
+- [ ] Deploy to cloud (Heroku/Vercel)
+- [ ] Add dark mode 🌙
+
+---
+
+## 📃 License
+
+This project is licensed under the MIT License.
+```
+
+---
+
+Let me know if you wanna:
+- Add screenshots
+- Drop badges (build, license, stars)
+- Include a usage demo or video
+- Write setup instructions for production
+
+You want me to save it to the repo folder too? 🛠️
