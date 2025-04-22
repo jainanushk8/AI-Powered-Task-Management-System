@@ -1,4 +1,3 @@
-// src/components/TaskPrediction.js
 import React, { useState } from 'react';
 import { predictSchedule } from '../api'; // Import the predictSchedule function
 
