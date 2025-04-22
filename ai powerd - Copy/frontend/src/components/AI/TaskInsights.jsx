@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getSentiment, optimizeTask, predictSchedule } from '../api'; // Import the API functions
+import { getSentiment, optimizeTask, predictSchedule } from '../../api'; // Import the API functions
 
 function TaskInsights({ task }) {
   const [sentiment, setSentiment] = useState(null);

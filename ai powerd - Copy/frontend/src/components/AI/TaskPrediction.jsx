@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { predictSchedule } from '../api'; // Import the predictSchedule function
+import { predictSchedule } from '../../api'; // Import the predictSchedule function
 
 function TaskPrediction({ taskDescription }) {
   const [prediction, setPrediction] = useState(null);
