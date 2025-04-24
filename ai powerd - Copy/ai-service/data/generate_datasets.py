@@ -22,7 +22,7 @@ def generate_synthetic_data(num_samples, output_file):
     print(f"Dataset with {num_samples} samples saved to {output_file}")
 
 # Generate training dataset
-generate_synthetic_data(100, "f:\\CHat with PDF and Audio\\ai-task-management-system\\ai\\data\\training_data.csv")
+generate_synthetic_data(100, "f:\\Infotact Internship materials\NewZip\ai powerd - Copy\ai-service\\data\\training_data.csv")
 
 # Generate testing dataset
-generate_synthetic_data(100, "f:\\CHat with PDF and Audio\\ai-task-management-system\\ai\\data\\testing_data.csv")
+generate_synthetic_data(100, "f:\\Infotact Internship materials\NewZip\ai powerd - Copy\ai-service\\data\\training_data.csv")
