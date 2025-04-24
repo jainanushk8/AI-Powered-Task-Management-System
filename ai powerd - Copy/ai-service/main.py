@@ -3,17 +3,14 @@
 import time
 import logging
 import logging.config
-
+from fastapi import HTTPException
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-
 from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
-
 from routes import sentiment, optimization, schedule_predict, chat, tasks
 from logging_config import LOGGING_CONFIG
-
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from auth import create_access_token
@@ -21,8 +18,6 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from fastapi.responses import JSONResponse
-
-
 
 
 # ─── Configure structured logging ───────────────────────────────────────────
