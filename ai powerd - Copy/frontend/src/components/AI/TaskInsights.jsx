@@ -15,7 +15,7 @@ function TaskInsights({ task }) {
 
       // Fetch sentiment analysis
       getSentiment(task.description)
-        .then(res => setSentiment(res))
+        .then(res => setSentiment(res)) // Store sentiment response
         .catch(err => setError('Error fetching sentiment analysis'))
         .finally(() => setLoading(false));
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create an axios instance with your base URL
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/ai', // Update with your backend URL if needed
+  baseURL: 'http://127.0.0.1:8000/api', // Update with your backend URL if needed
 });
 
 // Function to get sentiment analysis

@@ -9,9 +9,13 @@ class TaskOptimizer:
         if os.path.exists(model_path):
             self.model = joblib.load(model_path)
         else:
+            # If the model doesn't exist, train a dummy model and save it
             self.model = RandomForestRegressor()
-            # In prod, you would train the model and save
-            # For now, use a dummy model until training is done
+            # Dummy data for training (replace with your actual training data)
+            X_train = np.array([[5, 3, 10], [3, 2, 5], [6, 4, 12]])  # Example features
+            y_train = np.array([1, 2, 3])  # Example labels (priority score)
+            self.model.fit(X_train, y_train)
+            joblib.dump(self.model, model_path)  # Save the trained model
 
     def predict_priority(self, features: list):
         prediction = self.model.predict([features])
