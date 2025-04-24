@@ -1,0 +1,11 @@
+task_id,task_description,assigned_to,status,priority,created_at,due_date
+1,Implement user authentication,John Doe,In Progress,High,2023-10-01,2023-10-10
+2,Develop task management API,Jane Smith,To-Do,Medium,2023-10-02,2023-10-15
+3,Create frontend components for task list,Emily Johnson,To-Do,Low,2023-10-03,2023-10-20
+4,Integrate sentiment analysis model,Michael Brown,On-Hold,High,2023-10-04,2023-10-25
+5,Set up database connection,Chris Davis,Completed,Medium,2023-10-05,2023-10-05
+6,Design user profile page,Jessica Wilson,In Progress,Low,2023-10-06,2023-10-30
+7,Write unit tests for task controller,David Martinez,To-Do,Medium,2023-10-07,2023-10-18
+8,Deploy application to AWS,Laura Garcia,To-Do,High,2023-10-08,2023-10-28
+9,Conduct user feedback session,Daniel Rodriguez,Completed,Medium,2023-10-09,2023-10-09
+10,Optimize task scheduling algorithm,Sarah Lee,To-Do,High,2023-10-10,2023-10-22
