@@ -5,6 +5,15 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field, validator
 from models.sentiment_model import SentimentModel
 import logging
+from main import limiter
+from auth import get_current_user
+from fastapi import Depends
+import bleach
+from pydantic import BaseModel
+
+@limiter.limit("5/minute")
+async def limited_route():
+    return {"message": "This route is rate limited"}
 
 router = APIRouter()
 model = SentimentModel()
@@ -23,6 +32,19 @@ class SentimentRequest(BaseModel):
 class SentimentResponse(BaseModel):
     label: str
     confidence: float
+@router.get("/protected-route")
+async def protected_route(current_user: str = Depends(get_current_user)):
+    return {"message": f"Hello, {current_user}"}
+
+class InputModel(BaseModel):
+    text: str
+
+@router.post("/sanitize")
+async def sanitize_input(input: InputModel):
+    clean_text = bleach.clean(input.text)
+    return {"clean_text": clean_text}
+
+@router.get("/limited")
 
 @router.post(
     "/",

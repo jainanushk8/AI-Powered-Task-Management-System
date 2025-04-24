@@ -6,3 +6,7 @@ scikit-learn
 xgboost
 pandas
 numpy
+python-jose
+passlib[bcrypt]
+slowapi
+bleach

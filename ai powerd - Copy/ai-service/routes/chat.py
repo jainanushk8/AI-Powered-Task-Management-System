@@ -1,5 +1,9 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from typing import List
+from main import limiter
+import bleach
+from pydantic import BaseModel
+
 
 router = APIRouter()
 
@@ -20,6 +24,11 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
+@router.get("/limited")
+@limiter.limit("5/minute")
+async def limited_route():
+    return {"message": "This route is rate limited"}
+
 @router.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
@@ -29,3 +38,11 @@ async def websocket_endpoint(websocket: WebSocket):
             await manager.broadcast(data)
     except WebSocketDisconnect:
         manager.disconnect(websocket)
+
+class InputModel(BaseModel):
+    text: str
+
+@router.post("/sanitize")
+async def sanitize_input(input: InputModel):
+    clean_text = bleach.clean(input.text)
+    return {"clean_text": clean_text}

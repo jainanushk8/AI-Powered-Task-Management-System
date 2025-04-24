@@ -14,6 +14,17 @@ from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_
 from routes import sentiment, optimization, schedule_predict, chat, tasks
 from logging_config import LOGGING_CONFIG
 
+from fastapi import Depends
+from fastapi.security import OAuth2PasswordRequestForm
+from auth import create_access_token
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from fastapi.responses import JSONResponse
+
+
+
+
 # ─── Configure structured logging ───────────────────────────────────────────
 logging.config.dictConfig(LOGGING_CONFIG)
 logger = logging.getLogger(__name__)
@@ -39,6 +50,27 @@ REQUEST_LATENCY = Histogram(
     "app_request_latency_seconds", "HTTP request latency in seconds",
     ["method", "endpoint"]
 )
+
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request, exc):
+    return JSONResponse(
+        status_code=429,
+        content={"detail": "Rate limit exceeded"},
+    )
+
+
+@app.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    # Replace with your user authentication logic
+    user_dict = {"username": "testuser", "password": "testpass"}
+    if form_data.username != user_dict["username"] or form_data.password != user_dict["password"]:
+        raise HTTPException(status_code=400, detail="Incorrect username or password")
+    access_token = create_access_token(data={"sub": user_dict["username"]})
+    return {"access_token": access_token, "token_type": "bearer"}
+
 
 @app.middleware("http")
 async def metrics_middleware(request: Request, call_next):
